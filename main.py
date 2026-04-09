@@ -14,6 +14,7 @@ button = Button.left
 start_stop_key = KeyCode(char='`')
 exit_key = KeyCode(char='C')
 start = False
+alchemy = True
 
 
 class ClickMouse(threading.Thread):
@@ -67,6 +68,10 @@ class ClickMouse(threading.Thread):
 
 
                 time.sleep(self.delay)
+                if alchemy:
+                    pyautogui.keyDown('alt')
+                    mouse.click(self.button)
+                    pyautogui.keyUp('alt')
 
                 mouse.click(self.button)
                 print("CLICK")
